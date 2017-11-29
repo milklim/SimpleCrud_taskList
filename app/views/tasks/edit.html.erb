@@ -1,0 +1,6 @@
+<%= form_for @task, url: update_task_path(@task.id.to_s) do |f| -%>
+    <%= f.hidden_field :id, value: @task.id %>
+    <%= f.text_field :name, value: @task.name %>
+    <%= f.text_field :description, value: @task.description %>
+    <%= f.submit "save" %>
+<% end %>
