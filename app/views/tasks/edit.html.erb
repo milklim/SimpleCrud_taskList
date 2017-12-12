@@ -2,5 +2,8 @@
     <%= f.hidden_field :id, value: @task.id %>
     <%= f.text_field :name, value: @task.name %>
     <%= f.text_field :description, value: @task.description %>
-    <%= f.submit "save" %>
+    <%= f.text_field :importance, placeholder: t('importance') %>
+    <%= f.date_select :expiry, order: [:day, :month, :year] %>
+    <%= f.check_box :done %>
+    <%= f.submit t('save') %>
 <% end %>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SimpleCrud</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="container">
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills float-right">
+          <li>
+              <%= link_to "EN", set_locale_path(locale: "en"), method: :put %> |
+              <%= link_to "RU", set_locale_path(locale: "ru"), method: :put %>
+          </li>
+        </ul>
+      </nav>
+      <h2 class="text-muted">Task list</h2>
+    </div>
+
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+
+    <p><%= link_to t('sign_out'), destroy_user_session_path, method: :delete %></p>
+
+    <footer class="footer">
+      <p>&copy; World ORT 2017</p>
+    </footer>
+
+  </div>
+  </body>
+</html>
