@@ -1,9 +1,9 @@
 <%= form_for @task, url: update_task_path(@task.id.to_s) do |f| -%>
-    <%= f.hidden_field :id, value: @task.id %>
-    <%= f.text_field :name, value: @task.name %>
-    <%= f.text_field :description, value: @task.description %>
-    <%= f.text_field :importance, placeholder: t('importance') %>
-    <%= f.date_select :expiry, order: [:day, :month, :year] %>
-    <%= f.check_box :done %>
-    <%= f.submit t('save') %>
+    <div> <%= f.hidden_field :id, value: @task.id %>
+    <div>  <%= f.text_field :name, value: @task.name %></div>
+    <div>  <%= f.text_field :description, value: @task.description %></div>
+    <div>  <%= f.text_field :importance, placeholder: t('importance') %></div>
+    <div>  <%= f.date_select :expiry, order: [:day, :month, :year] %></div>
+    <div>   <%= f.check_box :done %></div>
+    <div>   <%= f.submit t('save') %></div>
 <% end %>

@@ -2,18 +2,39 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks.order("expiry").all
-
     respond_to do |format|
       format.html{render 'tasks/index'}
-      format.json{render :json => {tasks: @tasks}}
+      format.json{render json:  @tasks, status: :ok }
     end
-
-    # render 'tasks/index'
   end
 
+  # def new
+  #   respond_to do |format|
+  #     format.html{render 'tasks/new'}
+  #     format.json{render json:  @task, status: 	:unprocessable_entity}
+  #   end
+  # end
+
   def create
-    current_user.tasks.create(task_create_params)
-    redirect_to '/'
+    @task = current_user.tasks.create(task_create_params)
+    if @task.valid?
+      respond_to do |format|
+        format.html{render '/'}
+        format.json{render json:  @task, status: 	:ok }
+      end    else
+      if @task.errors.any?
+        flash[:alert] = []
+        @task.errors.full_messages.each do |msg|
+          flash[:alert] << msg
+        end
+      end
+      # @task = task
+      respond_to do |format|
+        format.html{render 'tasks/new'}
+        format.json{render json:  @task, status: 	:unprocessable_entity }
+      end
+
+    end
   end
 
   def edit

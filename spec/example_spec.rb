@@ -1,9 +1,7 @@
-require 'rspec'
 
 describe 'Example behaviour' do
 
   it 'should do something' do
-
-    true.should == false
+    expect(true).to eq true
   end
 end

@@ -24,10 +24,11 @@
 
 
     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="alert text-danger"><%= alert %></p>
 
-    <%= yield %>
-
+    <div>
+      <%= yield %>
+    </div>
     <p><%= link_to t('sign_out'), destroy_user_session_path, method: :delete %></p>
 
     <footer class="footer">
